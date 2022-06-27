@@ -1,0 +1,21 @@
+#landing {
+    background-image: url(../image/landing_Wallpaper.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+    /* min-height: 100vh; */
+}
+
+#landing .row {
+    min-height: 100vh;
+}
+
+#search {
+min-height: 20vh;
+}
+
+#properties {
+    min-height: 100vh;
+}
