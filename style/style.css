@@ -19,3 +19,7 @@ min-height: 20vh;
 #properties {
     min-height: 100vh;
 }
+
+#footer {
+    /* min-height: 50px; */
+}

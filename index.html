@@ -15,30 +15,71 @@
 
 <body>
     <!-- <div class="container"> -->
-        <section id="landing">
-            <div class="container h-100">
-                <div class="row h-100 d-flex justify-content-center align-items-center">
-                    <div class="col-6">
-                        <h2 class="text-center">Welcome to </h2>
-                        <h3 class="text-center"> is an innovative website that allows the sale and purchase of paints of all
+    <section id="landing">
+        <div class="container h-100">
+            <div class="row h-100 d-flex justify-content-center align-items-center">
+                <div class="col-6">
+                    <h2 class="text-center">Welcome to </h2>
+                    <h3 class="text-center"> is an innovative website that allows the sale and purchase of paints of all
                         <!-- ethinicities.</h3> -->
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="border border-3 border-primary" id="search">
-          <div class="container">
-              <h2></h2>
+    <section class="border border-3 border-primary" id="search">
+        <div class="container">
+            <h2>filter</h2>
 
-          </div>
-        </section>
+            <div class="row">
+                <div class="mx-auto col-lg-2 col-md-6 ">
+                    <label for="property">Looking For:</label>
+                    <select name="property" id="property">
+                        <option value="">Property Type</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="mx-auto col-lg-2 col-md-6 ">
+                    <label for="location">Location</label>
+                    <select name="location" id="location">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="mx-auto col-lg-2 col-md-6 ">
+                    <label for="size">Property size</label>
+                    <select name="size" id="size">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="mx-auto col-lg-2 col-md-6 ">
+                    <label for="budget">Your Budget</label>
+                    <select name="budget" id="budget">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+                </div>
+                <div class="mx-auto col-lg-2 col-md-6 ">
+                    <!-- <label for=""></label> -->
+                    <button id="btnSearch" class="btn btn-primary">Search</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section class="border border-3 border-primary" id="properties">
-            <h2></h2>
-        </section>
+    <section class="border border-3 border-primary" id="propertiesList">
+        <h2 class="text-center">Properties</h2>
+        <div id="properties"></div>
+    </section>
 
-        <footer id="footer" class="text-center"></footer>
+    <footer id="footer" class="p-5 text-center">
+
+    </footer>
     <!-- </div> -->
 
     <!-- JavaScript Bundle with Popper -->
