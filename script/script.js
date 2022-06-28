@@ -1,4 +1,6 @@
-let arr = [
+let arr = JSON.parse(localStorage.getItem("products"))
+  ? JSON.parse(localStorage.getItem("products"))
+  : [
   {
     type: "Commercial",
     location: "Athlone",
@@ -21,7 +23,7 @@ let arr = [
   },
   {
     type: "Apartment",
-    address: "194 Mercer Street, 627 Broadway",
+    address: "65 Lawson Rd",
     location: "Belgravia",
     picture: `../image/apt1.jpg`,
     bedrooms: 1,
@@ -31,9 +33,19 @@ let arr = [
   },
   {
     type: "Apartment",
-    address: "190 Mercer Street, 627 Broadway",
+    address: "Quincy St",
+    location: "Jupiter",
+    picture: `../image/apt2.jpg`,
+    bedrooms: 3,
+    bathrooms: 2,
+    garage: 3,
+    price: 9500,
+  },
+  {
+    type: "Commercial",
+    address: "65 Lawson Rd",
     location: "Belgravia",
-    picture: `../image/apt1.jpg`,
+    picture: `../image/cmrcl2.jpg`,
     bedrooms: 1,
     bathrooms: 1,
     garage: 1,
@@ -41,9 +53,18 @@ let arr = [
   },
   {
     type: "Apartment",
-    address: "194 Mercer Street, 627 Broadway",
+    address: "65 Lawson Rd",
     location: "Belgravia",
-    picture: `../image/apt1.jpg`,
+    picture: `../image/res2.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  }, {
+    type: "Residential",
+    address: "65 Lawson Rd",
+    location: "Belgravia",
+    picture: `../image/res3.jpg`,
     bedrooms: 1,
     bathrooms: 1,
     garage: 1,
@@ -51,9 +72,49 @@ let arr = [
   },
   {
     type: "Apartment",
-    address: "194 Mercer Street, 627 Broadway",
+    address: "65 Lawson Rd",
     location: "Belgravia",
-    picture: `../image/apt1.jpg`,
+    picture: `../image/apt3.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    type: "Commercial",
+    address: "65 Lawson Rd",
+    location: "Belgravia",
+    picture: `../image/cmrcl3.webp`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    type: "Residential",
+    address: "65 Lawson Rd",
+    location: "Belgravia",
+    picture: `../image/res4.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    type: "Commercial",
+    address: "65 Lawson Rd",
+    location: "Belgravia",
+    picture: `../image/cmrcl4.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    type: "Apartment",
+    address: "65 Lawson Rd",
+    location: "Belgravia",
+    picture: `../image/apt4.jpg`,
     bedrooms: 1,
     bathrooms: 1,
     garage: 1,
@@ -102,8 +163,8 @@ arr.forEach((item, index) => {
 
                   <div class="col-6">
                     <label>Property type: </label>
-                    <p><i class="fa-solid fa-house-building"></i>${item.type}</p>
-                      
+                    <p><i class="fa-solid fa-building-user"></i> ${item.type}</p>
+
                     <label>Bedrooms: </label>
                     <p><i class="fa-solid fa-bed"></i> ${item.bedrooms}</p>
 
