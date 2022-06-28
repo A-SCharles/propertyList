@@ -21,65 +21,67 @@
                 <div class="col-6">
                     <h2 class="text-center">Welcome to </h2>
                     <h3 class="text-center"> is an innovative website that allows the sale and purchase of paints of all
-                        <!-- ethinicities.</h3> -->
+                    </h3>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="border border-3 border-primary" id="search">
-        <div class="container">
-            <h2>filter</h2>
+    <section id="search">
+        <div class="container rounded rounded-5 border border-2 p-3 my-3">
+            <h2 class="text-center">Filter</h2>
 
             <div class="row">
                 <div class="mx-auto col-lg-2 col-md-6 ">
                     <label for="property">Looking For:</label>
-                    <select name="property" id="property">
+                    <select class="form-select" name="property" id="property">
                         <option value="">Property Type</option>
                         <option value=""></option>
                         <option value=""></option>
                     </select>
                 </div>
                 <div class="mx-auto col-lg-2 col-md-6 ">
-                    <label for="location">Location</label>
-                    <select name="location" id="location">
-                        <option value=""></option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-                <div class="mx-auto col-lg-2 col-md-6 ">
-                    <label for="size">Property size</label>
-                    <select name="size" id="size">
-                        <option value=""></option>
+                    <label for="location">Location: </label>
+                    <select class="form-select" name="location" id="location">
+                        <option value="">All Cities</option>
                         <option value=""></option>
                         <option value=""></option>
                     </select>
                 </div>
                 <div class="mx-auto col-lg-2 col-md-6 ">
-                    <label for="budget">Your Budget</label>
-                    <select name="budget" id="budget">
-                        <option value=""></option>
+                    <label for="size">Property size: </label>
+                    <select class="form-select" name="size" id="size">
+                        <option value="">Bedrooms</option>
                         <option value=""></option>
                         <option value=""></option>
                     </select>
                 </div>
                 <div class="mx-auto col-lg-2 col-md-6 ">
-                    <!-- <label for=""></label> -->
-                    <button id="btnSearch" class="btn btn-primary">Search</button>
+                    <label for="budget">Your Budget: </label>
+                    <select class="form-select" name="budget" id="budget">
+                        <option value="">Max. Price</option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
                 </div>
+                <!-- <div class="mx-auto col-lg-2 col-md-6 "> -->
+                <!-- <label for=""></label> -->
+                <button id="btnSearch" class="mx-auto col-lg-2 col-md-6 btn btn-primary h-50 mt-4">Search</button>
+                <!-- </div> -->
             </div>
         </div>
     </section>
 
-    <section class="border border-3 border-primary" id="propertiesList">
-        <h2 class="text-center">Properties</h2>
-        <div id="properties"></div>
+    <section class="p-3" id="propertiesList">
+        <div class="container">
+            <h2 class="text-center">Properties</h2>
+            <!-- Where the cards go -->
+            <div id="properties" class="row"></div>
+        </div>
     </section>
 
-    <footer id="footer" class="p-5 text-center">
-
-    </footer>
+    <footer id="footer" class="p-5 bg-dark text-center text-white"></footer>
     <!-- </div> -->
 
     <!-- JavaScript Bundle with Popper -->

@@ -1,3 +1,4 @@
+/* Landing */
 #landing {
     background-image: url(../image/landing_Wallpaper.jpg);
     background-repeat: no-repeat;
@@ -5,21 +6,44 @@
     background-attachment: fixed;
     background-position: center;
     color: white;
-    /* min-height: 100vh; */
+    min-height: 120vh;
 }
 
 #landing .row {
     min-height: 100vh;
 }
 
+/* ======================================================== */
+
+/* Search */
 #search {
-min-height: 20vh;
+    padding: 10px;
+    min-height: 20vh;
+    margin-top: -95px;
 }
 
+#search .container {
+    background-color: white;
+    box-shadow: 5px 5px 10px 1px #616161;
+}
+
+#search label {
+    width: 150px;
+}
+
+/* ========================================================= */
+
+/* Properties */
 #properties {
     min-height: 100vh;
 }
 
+#properties .card {
+    height: fit-content;
+    width: 350px;
+}
+
+/* ========================================================== */
 #footer {
     /* min-height: 50px; */
 }
