@@ -1,7 +1,8 @@
-let arr = JSON.parse(localStorage.getItem("products"))
-  ? JSON.parse(localStorage.getItem("products"))
+let arr = JSON.parse(localStorage.getItem("properties"))
+  ? JSON.parse(localStorage.getItem("properties"))
   : [
   {
+    id: 0,
     type: "Commercial",
     location: "Athlone",
     address: '8100 S Ashland Ave',
@@ -12,6 +13,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 1,
     type: "Residential",
     location: "Rondebosch East",
     address: 'Metro Plaza Dr',
@@ -22,6 +24,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 7000,
   },
   {
+    id: 2,
     type: "Apartment",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -32,6 +35,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 3,
     type: "Apartment",
     address: "Quincy St",
     location: "Jupiter",
@@ -42,6 +46,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 9500,
   },
   {
+    id: 4,
     type: "Commercial",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -52,6 +57,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 5,
     type: "Apartment",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -61,6 +67,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     garage: 1,
     price: 5000,
   }, {
+    id: 6,
     type: "Residential",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -71,6 +78,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 7,
     type: "Apartment",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -81,6 +89,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 8,
     type: "Commercial",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -91,6 +100,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 9,
     type: "Residential",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -101,6 +111,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 10,
     type: "Commercial",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -111,6 +122,7 @@ let arr = JSON.parse(localStorage.getItem("products"))
     price: 5000,
   },
   {
+    id: 11,
     type: "Apartment",
     address: "65 Lawson Rd",
     location: "Belgravia",
@@ -122,10 +134,15 @@ let arr = JSON.parse(localStorage.getItem("products"))
   },
 ];
 
+// localStorage.removeItem('properties')
+
+// displays data in array
 let properties = document.getElementById("properties");
+function loadData(){
 arr.forEach((item, index) => {
   properties.innerHTML += `
-  <div class="card p-3 m-3 mx-auto">
+  <div class="card p-3 m-3 mx-auto" data-aos="flip-right"
+  data-aos-duration="1500" data-aos-delay="150">
     <img src="${item.picture}" class="card-img-top" alt="...">
     <div class="card-body">
     <h5>Address: ${item.address}</h5>
@@ -147,7 +164,7 @@ arr.forEach((item, index) => {
 
   <!--  -->
   <!-- Modal -->
-  <div class="modal fade" id="property${index}" tabindex="-1" aria-labelledby="propertyLabel" aria-hidden="true">
+  <div class="modal fade" id="property${index}" tabindex="-1" aria-labelledby="propertyLabel" aria-hidden="true" data-aos="flip-left">
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
@@ -185,7 +202,28 @@ arr.forEach((item, index) => {
   </div>
   <!--  -->
     `;
-});
+});}
+loadData()
+
+// Sorts by property type
+function sortType(type){
+
+}
+
+// sorts by Location
+function sortLocation(location){
+
+}
+
+// sorts by bedrooms
+function sortBedroom(bedrooms){
+
+}
+
+// sorts by budget
+function sortBudget(price) {
+
+}
 
 // footer & copyright
 const Year = new Date().getFullYear();
