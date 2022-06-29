@@ -1,8 +1,7 @@
 localStorage.setItem(
   "property",
   JSON.stringify(
-    (properties = [
-      {
+    (properties = [{
         id: 0,
         type: "Commercial",
         location: "Athlone",
@@ -156,7 +155,7 @@ function loadData() {
     <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#update${index}"><i class="fa-solid fa-pen-to-square"></i></a>
     
     <!-- Delete -->
-    <a class="btn"><i class="fa-solid fa-trash-can"></i></a>
+    <a class="btn" id="delete"><i class="fa-solid fa-trash-can"></i></a>
     </td>
     </tr>
 
@@ -192,7 +191,7 @@ function loadData() {
     
             <!-- Location -->
                 <div class="mb-3">
-                    <label for="editLocation${index}" class="form-label">Address</label>
+                    <label for="editLocation${index}" class="form-label">Location</label>
                     <input class="form-control" type="text"
                     name="editLocation${index}"
                     id="editLocation${index}"
@@ -201,7 +200,7 @@ function loadData() {
     
             <!-- picture -->
                 <div class="mb-3">
-                    <label for="editPic${index}" class="form-label">Address</label>
+                    <label for="editPic${index}" class="form-label">Picture</label>
                     <input class="form-control" type="text"
                     name="editPic${index}"
                     id="editPic${index}"
@@ -212,7 +211,7 @@ function loadData() {
             <div class="col-6">
             <!-- bedrooms -->
                 <div class="mb-3">
-                    <label for="editRooms${index}" class="form-label">Address</label>
+                    <label for="editRooms${index}" class="form-label">Bedrooms</label>
                     <input class="form-control" type="text"
                     name="editRooms${index}"
                     id="editRooms${index}"
@@ -221,7 +220,7 @@ function loadData() {
                 
             <!-- bathrooms -->
                 <div class="mb-3">
-                    <label for="editBath${index}" class="form-label">Address</label>
+                    <label for="editBath${index}" class="form-label">Bathrooms</label>
                     <input class="form-control" type="text"
                     name="editBath${index}"
                     id="editBath${index}"
@@ -230,7 +229,7 @@ function loadData() {
     
             <!-- garage -->
                 <div class="mb-3">
-                    <label for="editGarage${index}" class="form-label">Address</label>
+                    <label for="editGarage${index}" class="form-label">Garage Space</label>
                     <input class="form-control" type="text"
                     name="editGarage${index}"
                     id="editGarage${index}"
@@ -239,7 +238,7 @@ function loadData() {
     
             <!-- price -->
                 <div class="mb-3">
-                    <label for="editPrice${index}" class="form-label">Address</label>
+                    <label for="editPrice${index}" class="form-label">Price</label>
                     <input class="form-control" type="text"
                     name="editPrice${index}"
                     id="editPrice${index}"
@@ -252,7 +251,7 @@ function loadData() {
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" onclick="updateProperty(${index})" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
           </div>
         </div>
       </div>
@@ -261,3 +260,78 @@ function loadData() {
   });
 }
 loadData();
+
+// CREATE
+function addItem() {
+  // e.preventDefault();
+  lists.push({
+    item: lists.length - 1 + 1,
+    task: document.getElementById("add").value,
+    createdDate: new Date(),
+    completed: false,
+  });
+  loadData();
+  localStorage.setItem("property", JSON.stringify(properties));
+}
+
+// UPDATE
+function updateProperty(id) {
+  console.log('Im being clicked')
+  let type = document.getElementById(`editType${id}`).value
+  let location = document.getElementById(`editLocation${id}`).value
+  let address = document.getElementById(`editTitle${id}`).value
+  let picture = document.getElementById(`editPic${id}`).value
+  let bedrooms = document.getElementById(`editRooms${id}`).value
+  let bathrooms = document.getElementById(`editBath${id}`).value
+  let garage = document.getElementById(`editGarage${id}`).value
+  let price = document.getElementById(`editPrice${id}`).value
+
+  properties[id] = ({
+    type,
+    location,
+    address,
+    picture,
+    bedrooms,
+    bathrooms,
+    garage,
+    price
+  })
+  localStorage.setItem("property", JSON.stringify(properties));
+  loadData()
+}
+
+// DELETE
+function deleteItem(id) {
+  if (id > -1) {
+    lists.splice(id, 1);
+    localStorage.setItem("property", JSON.stringify(properties));
+  }
+  loadData();
+}
+document.getElementById('delete').addEventListener('click', deleteItem)
+
+// footer & copyright
+const Year = new Date().getFullYear();
+document.getElementById("footer").innerHTML += `
+<div class="container">
+  <div class="row w-100">
+      <div class="col-12 d-flex justify-content-between">
+        <p><i class="fa-solid fa-location-dot"></i> Property 420</p>
+        
+        <i>&copyAbdus-Samad Charles ${Year}</i>
+        <div>
+          <a href="" class="mx-1 text-black">
+          <i class="fa-brands fa-github">
+              GitHub
+          </i>
+          </a>
+          <a href="" class="mx-1 text-black">
+          <i class="fa-brands fa-linkedin">
+              LinkedIn
+          </i>
+          </a>
+      </div>
+    </div>   
+  </div> 
+</div>
+`;

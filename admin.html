@@ -17,45 +17,157 @@
 
 <body>
     <!-- nav -->
-    <nav class="bg-dark w-100" id="Nav">
-        <ul class="nav bg-dark fixed-top container justify-content-between">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
-            </li>
+    <nav class="navbar bg-dark text-light sticky-top justify-content-between">
+        <div class="container">
+            <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
 
-            <li class="nav-item">
-                <a class="nav-link">Admin Page</a>
-            </li>
+            <a class="nav-item nav-link">Admin Page</a>
 
-            <li class="nav-item">
-                <a class="nav-link" href="./admin.html">Admin</a>
-            </li>
-        </ul>
+            <a class="nav-link" href="./admin.html">Admin</a>
+        </div>
     </nav>
 
     <main>
-        <section id="Properties" >
-            <div class="container text-center">
+        <section id="Properties">
+            <div class="container text-center my-2">
                 <h2>Properties - Admin</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Address</th>
-                          <th scope="col">Type</th>
-                          <th scope="col">Location</th>
-                          <th scope="col"></th>
-                        </tr>
-                      </thead>
-                      <tbody id="tbody" >
+                <div class="row border border-4 border-primary">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Location</th>
+                                <th scope="col"><a data-bs-toggle="modal" data-bs-target="#addnew" class="btn"><i
+                                            class="fa-regular fa-square-plus"></i></a></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
 
-                      </tbody>
-                </table>
-
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
     </main>
 
+
+    <!-- Modal -->
+    <div class="modal fade" id="addnew" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Add product
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <!-- Address -->
+                            <div class="mb-3">
+                                <label for="addAddress" class="form-label">Address</label>
+                                <input class="form-control" type="text" name="addAddress" id="addAddress"
+                                    placeholder="Enter Address" required />
+                            </div>
+
+                            <!-- Type -->
+                            <div class="mb-3">
+                                <label for="addType" class="form-label">Type</label>
+                                <select class="form-select" name="addType" id="addType">
+                                    <option value="">Property Type</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Residential">Residential</option>
+                                    <option value="Apartment">Apartment</option>
+                                </select>
+                                <!-- <input class="form-control" 
+                                type="text" name="addType" id="addType"/> -->
+                            </div>
+
+                            <!-- Location -->
+                            <div class="mb-3">
+                                <label for="addLocation" class="form-label">Location</label>
+                                <select class="form-select" name="addLocation" id="addLocation">
+                                    <option value="">All Cities</option>
+                                    <option value="Athlone">Athlone</option>
+                                    <option value="Belgravia">Belgravia</option>
+                                    <option value="Leeward">Leeward</option>
+                                    <option value="Jupiter">Jupiter</option>
+                                    <option value="Rondebosch">Rondebosch East</option>
+                                </select>
+                             </div>
+
+                            <!-- picture -->
+                            <div class="mb-3">
+                                <label for="addPicture" class="form-label">Picture</label>
+                                <input class="form-control" type="text" name="addPicture" id="addPicture" />
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <!-- bedrooms -->
+                            <div class="mb-3">
+                                <label for="addRooms" class="form-label">Bedrooms</label>
+                                <select class="form-select" name="addRooms" id="addRooms">
+                                    <option value="">Bedrooms</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+                            <!-- bathrooms -->
+                            <div class="mb-3">
+                                <label for="addBathrooms" class="form-label">Bathrooms</label>
+                                <select class="form-select" name="addBathrooms" id="addBathrooms">
+                                    <option value="">Bathrooms</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+                            <!-- garage -->
+                            <div class="mb-3">
+                                <label for="addGarage" class="form-label">Garage Space</label>
+                                <select class="form-select" name="addGarage" id="addGarage">
+                                    <option value="">Garage Spaces</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+
+                            <!-- price -->
+                            <div class="mb-3">
+                                <label for="addPrice" class="form-label">Price</label>
+                                <input class="form-control" type="text" name="addPrice" id="addPrice" placeholder="Enter Price" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="createProduct()">
+                            Create Product
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+
+    <footer id="footer" class="py-3 text-dark text-center"></footer>
 
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
