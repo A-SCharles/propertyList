@@ -1,146 +1,12 @@
-let arr = JSON.parse(localStorage.getItem("properties"))
-  ? JSON.parse(localStorage.getItem("properties"))
-  : [
-  {
-    id: 0,
-    type: "Commercial",
-    location: "Athlone",
-    address: '8100 S Ashland Ave',
-    picture: `../image/cmrcl1.jpg`,
-    bedrooms: 2,
-    bathrooms: 3,
-    garage: 2,
-    price: 5000,
-  },
-  {
-    id: 1,
-    type: "Residential",
-    location: "Rondebosch East",
-    address: 'Metro Plaza Dr',
-    picture: `../image/res1.jpg`,
-    bedrooms: 3,
-    bathrooms: 2,
-    garage: 3,
-    price: 7000,
-  },
-  {
-    id: 2,
-    type: "Apartment",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/apt1.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 3,
-    type: "Apartment",
-    address: "Quincy St",
-    location: "Jupiter",
-    picture: `../image/apt2.jpg`,
-    bedrooms: 3,
-    bathrooms: 2,
-    garage: 3,
-    price: 9500,
-  },
-  {
-    id: 4,
-    type: "Commercial",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/cmrcl2.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 5,
-    type: "Apartment",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/res2.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  }, {
-    id: 6,
-    type: "Residential",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/res3.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 7,
-    type: "Apartment",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/apt3.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 8,
-    type: "Commercial",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/cmrcl3.webp`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 9,
-    type: "Residential",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/res4.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 10,
-    type: "Commercial",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/cmrcl4.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-  {
-    id: 11,
-    type: "Apartment",
-    address: "65 Lawson Rd",
-    location: "Belgravia",
-    picture: `../image/apt4.jpg`,
-    bedrooms: 1,
-    bathrooms: 1,
-    garage: 1,
-    price: 5000,
-  },
-];
-
-// localStorage.removeItem('properties')
+let arr = JSON.parse(localStorage.getItem("property"));
+// localStorage.removeItem('property')
 
 // displays data in array
 let properties = document.getElementById("properties");
-function loadData(){
-arr.forEach((item, index) => {
-  properties.innerHTML += `
+function loadData() {
+  properties.innerHTML = "";
+  arr.forEach((item, index) => {
+    properties.innerHTML += `
   <div class="card p-3 m-3 mx-auto" data-aos="flip-right"
   data-aos-duration="1500" data-aos-delay="150">
     <img src="${item.picture}" class="card-img-top" alt="...">
@@ -168,7 +34,9 @@ arr.forEach((item, index) => {
       <div class="modal-dialog">
           <div class="modal-content">
               <div class="modal-header">
-                  <h5 class="modal-title" id="propertyLabel">${item.address}</h5>
+                  <h5 class="modal-title" id="propertyLabel">${
+                    item.address
+                  }</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
 
@@ -180,7 +48,9 @@ arr.forEach((item, index) => {
 
                   <div class="col-6">
                     <label>Property type: </label>
-                    <p><i class="fa-solid fa-building-user"></i> ${item.type}</p>
+                    <p><i class="fa-solid fa-building-user"></i> ${
+                      item.type
+                    }</p>
 
                     <label>Bedrooms: </label>
                     <p><i class="fa-solid fa-bed"></i> ${item.bedrooms}</p>
@@ -202,28 +72,45 @@ arr.forEach((item, index) => {
   </div>
   <!--  -->
     `;
-});}
-loadData()
+  });
+}
+loadData(arr);
 
 // Sorts by property type
-function sortType(type){
-
+function sortType(type) {
+  let typeArr = arr.filter((x) => {
+    return x.type == type.target.value;
+  });
+  loadData(typeArr);
 }
+document.getElementById("property").addEventListener("change", sortType);
 
 // sorts by Location
-function sortLocation(location){
-
+function sortLocation(location) {
+  let locArr = arr.filter((x) => {
+    return x.location == location.target.value;
+  });
+  loadData(locArr);
 }
+document.getElementById("location").addEventListener("change", sortLocation);
 
 // sorts by bedrooms
-function sortBedroom(bedrooms){
-
+function sortBedroom(size) {
+  let bedArr = arr.filter((x) => {
+    return x.bedrooms <= size.target.value;
+  });
+  loadData(bedArr);
 }
+document.getElementById("size").addEventListener("change", sortBedroom);
 
 // sorts by budget
 function sortBudget(price) {
-
+  let sortPrice = arr.filter((p) => {
+    return p.price <= price.target.value;
+  });
+  loadData(sortPrice);
 }
+document.getElementById("budget").addEventListener("change", sortBudget);
 
 // footer & copyright
 const Year = new Date().getFullYear();

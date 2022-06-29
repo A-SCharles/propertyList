@@ -62,3 +62,9 @@
 #footer a:hover {
     color: #006fd79d;
 }
+/* ========================================================== */
+
+#Properties {
+    margin-top: 50px;
+    min-height: 100vh;
+}
