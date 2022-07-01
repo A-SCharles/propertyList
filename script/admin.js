@@ -136,9 +136,9 @@ let properties = JSON.parse(localStorage.getItem("property"))
     ];
 let display = document.getElementById("tbody");
 
-function loadData() {
+function loadData(n) {
   display.innerHTML = "";
-  properties.forEach((item, index) => {
+  n.forEach((item, index) => {
     display.innerHTML += `
     <tr>
     <th scope="row">${item.id}</th>
@@ -255,15 +255,44 @@ function loadData() {
     </div>
     `;
   });
-console.table(properties)
+  console.table(properties);
 }
-loadData();
+loadData(properties);
 
 // Sort
+let asc = true;
 function sort() {
+  asc = !asc;
 
+  let sorted = properties.sort((a, b) => {
+    let fa = a.location.toLowerCase(),
+      fb = b.location.toLowerCase();
+
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+
+  if (asc == false) {
+    document.getElementById("btnSort").innerHTML = `
+    <i class="fa-solid fa-arrow-down-z-a"></i>
+    `;
+    loadData(sorted);
+    console.table(sorted);
+  } else if (asc == true) {
+    document.getElementById("btnSort").innerHTML = `
+    <i class="fa-solid fa-arrow-down-a-z"></i>
+    `;
+    sorted.reverse();
+    loadData(sorted);
+  }
+  console.log(asc);
 }
-document.getElementById('btnSort').addEventListener('click', sort)
+document.getElementById("btnSort").addEventListener("click", sort);
 
 // CREATE
 function addItem() {
@@ -271,14 +300,14 @@ function addItem() {
   // Push to Array
   properties.push({
     id: properties.length + 1,
-    type : document.getElementById('addType').value,
-    location : document.getElementById('addLocation').value,
-    address : document.getElementById('addAddress').value,
-    picture : document.getElementById('addPicture').value,
-    bedrooms : parseInt(document.getElementById('addRooms').value),
-    bathrooms : parseInt(document.getElementById('addBathrooms').value),
-    garage : parseInt(document.getElementById('addGarage').value),
-    price : parseInt(document.getElementById('addPrice').value),
+    type: document.getElementById("addType").value,
+    location: document.getElementById("addLocation").value,
+    address: document.getElementById("addAddress").value,
+    picture: document.getElementById("addPicture").value,
+    bedrooms: parseInt(document.getElementById("addRooms").value),
+    bathrooms: parseInt(document.getElementById("addBathrooms").value),
+    garage: parseInt(document.getElementById("addGarage").value),
+    price: parseInt(document.getElementById("addPrice").value),
   });
   localStorage.setItem("property", JSON.stringify(properties));
   loadData();
@@ -298,17 +327,17 @@ function updateProperty(id) {
   let eprice = document.getElementById(`editPrice${id}`).value;
 
   // passing edited values into array
-    properties[id].type = etype
-    properties[id].location = elocation
-    properties[id].address = eaddress
-    properties[id].picture = epicture
-    properties[id].bedrooms = parseInt(ebedrooms)
-    properties[id].bathrooms = parseInt(ebathrooms)
-    properties[id].garage = parseInt(egarage)
-    properties[id].price = parseInt(eprice)
-    localStorage.setItem("property", JSON.stringify(properties));
-    loadData();
-  };
+  properties[id].type = etype;
+  properties[id].location = elocation;
+  properties[id].address = eaddress;
+  properties[id].picture = epicture;
+  properties[id].bedrooms = parseInt(ebedrooms);
+  properties[id].bathrooms = parseInt(ebathrooms);
+  properties[id].garage = parseInt(egarage);
+  properties[id].price = parseInt(eprice);
+  localStorage.setItem("property", JSON.stringify(properties));
+  loadData();
+}
 
 // DELETE
 function deleteItem(id) {
@@ -333,12 +362,12 @@ document.getElementById("footer").innerHTML += `
         
         <i>&copyAbdus-Samad Charles ${Year}</i>
         <div>
-          <a href="" class="mx-1 text-black">
+          <a href="" class="mx-1 text-white">
           <i class="fa-brands fa-github">
               GitHub
           </i>
           </a>
-          <a href="" class="mx-1 text-black">
+          <a href="" class="mx-1 text-white">
           <i class="fa-brands fa-linkedin">
               LinkedIn
           </i>
