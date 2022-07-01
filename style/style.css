@@ -60,3 +60,22 @@
     color: #006fd79d;
 }
 /* ========================================================== */
+/* Sort */
+#sort {
+    padding: 10px;
+    min-height: 15vh;
+    /* margin-top: -95px; */
+}
+
+#sort .container {
+    background-color: white;
+    box-shadow: 5px 5px 10px 1px #616161;
+}
+
+#sort label {
+    width: 150px;
+}
+
+table {
+    overflow-x: auto;
+}

@@ -1,17 +1,6 @@
-localStorage.setItem(
-  "property",
-  JSON.stringify(
-    (properties = [{
-        id: 0,
-        type: "Commercial",
-        location: "Athlone",
-        address: "8100 S Ashland Ave",
-        picture: `../image/cmrcl1.jpg`,
-        bedrooms: 2,
-        bathrooms: 3,
-        garage: 2,
-        price: 5000,
-      },
+let properties = JSON.parse(localStorage.getItem("property"))
+  ? JSON.parse(localStorage.getItem("property"))
+  : [
       {
         id: 1,
         type: "Residential",
@@ -133,10 +122,18 @@ localStorage.setItem(
         garage: 1,
         price: 9000,
       },
-    ])
-  )
-);
-
+      {
+        id: 12,
+        type: "Commercial",
+        location: "Athlone",
+        address: "8100 S Ashland Ave",
+        picture: `../image/cmrcl1.jpg`,
+        bedrooms: 2,
+        bathrooms: 3,
+        garage: 2,
+        price: 5000,
+      },
+    ];
 let display = document.getElementById("tbody");
 
 function loadData() {
@@ -155,7 +152,7 @@ function loadData() {
     <a type="button" class="btn" data-bs-toggle="modal" data-bs-target="#update${index}"><i class="fa-solid fa-pen-to-square"></i></a>
     
     <!-- Delete -->
-    <a class="btn" id="delete"><i class="fa-solid fa-trash-can"></i></a>
+    <a class="btn" id="delete" onclick="deleteItem(${index})"><i class="fa-solid fa-trash-can"></i></a>
     </td>
     </tr>
 
@@ -258,57 +255,73 @@ function loadData() {
     </div>
     `;
   });
+console.table(properties)
 }
 loadData();
+
+// Sort
+function sort() {
+
+}
+document.getElementById('btnSort').addEventListener('click', sort)
 
 // CREATE
 function addItem() {
   // e.preventDefault();
-  lists.push({
-    item: lists.length - 1 + 1,
-    task: document.getElementById("add").value,
-    createdDate: new Date(),
-    completed: false,
+  // Push to Array
+  properties.push({
+    id: properties.length + 1,
+    type : document.getElementById('addType').value,
+    location : document.getElementById('addLocation').value,
+    address : document.getElementById('addAddress').value,
+    picture : document.getElementById('addPicture').value,
+    bedrooms : parseInt(document.getElementById('addRooms').value),
+    bathrooms : parseInt(document.getElementById('addBathrooms').value),
+    garage : parseInt(document.getElementById('addGarage').value),
+    price : parseInt(document.getElementById('addPrice').value),
   });
-  loadData();
   localStorage.setItem("property", JSON.stringify(properties));
+  loadData();
 }
 
 // UPDATE
 function updateProperty(id) {
-  console.log('Im being clicked')
-  let type = document.getElementById(`editType${id}`).value
-  let location = document.getElementById(`editLocation${id}`).value
-  let address = document.getElementById(`editTitle${id}`).value
-  let picture = document.getElementById(`editPic${id}`).value
-  let bedrooms = document.getElementById(`editRooms${id}`).value
-  let bathrooms = document.getElementById(`editBath${id}`).value
-  let garage = document.getElementById(`editGarage${id}`).value
-  let price = document.getElementById(`editPrice${id}`).value
+  console.log("Im being clicked");
+  // variables for edited values
+  let etype = document.getElementById(`editType${id}`).value;
+  let elocation = document.getElementById(`editLocation${id}`).value;
+  let eaddress = document.getElementById(`editTitle${id}`).value;
+  let epicture = document.getElementById(`editPic${id}`).value;
+  let ebedrooms = document.getElementById(`editRooms${id}`).value;
+  let ebathrooms = document.getElementById(`editBath${id}`).value;
+  let egarage = document.getElementById(`editGarage${id}`).value;
+  let eprice = document.getElementById(`editPrice${id}`).value;
 
-  properties[id] = ({
-    type,
-    location,
-    address,
-    picture,
-    bedrooms,
-    bathrooms,
-    garage,
-    price
-  })
-  localStorage.setItem("property", JSON.stringify(properties));
-  loadData()
-}
+  // passing edited values into array
+    properties[id].type = etype
+    properties[id].location = elocation
+    properties[id].address = eaddress
+    properties[id].picture = epicture
+    properties[id].bedrooms = parseInt(ebedrooms)
+    properties[id].bathrooms = parseInt(ebathrooms)
+    properties[id].garage = parseInt(egarage)
+    properties[id].price = parseInt(eprice)
+    localStorage.setItem("property", JSON.stringify(properties));
+    loadData();
+  };
 
 // DELETE
 function deleteItem(id) {
   if (id > -1) {
-    lists.splice(id, 1);
-    localStorage.setItem("property", JSON.stringify(properties));
+    properties.splice(id, 1);
   }
+  for (i = 0; i < properties.length; i++) {
+    properties[i].id = i + 1;
+  }
+  localStorage.setItem("property", JSON.stringify(properties));
   loadData();
 }
-document.getElementById('delete').addEventListener('click', deleteItem)
+document.getElementById("delete").addEventListener("click", deleteItem);
 
 // footer & copyright
 const Year = new Date().getFullYear();

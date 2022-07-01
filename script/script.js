@@ -1,11 +1,147 @@
-let arr = JSON.parse(localStorage.getItem("property"));
+let arr = JSON.parse(localStorage.getItem("property"))
+  ? JSON.parse(localStorage.getItem("property"))
+  : [
+  {
+    id: 1,
+    type: "Residential",
+    location: "Rondebosch East",
+    address: "Metro Plaza Dr",
+    picture: `../image/res1.jpg`,
+    bedrooms: 3,
+    bathrooms: 2,
+    garage: 3,
+    price: 7000,
+  },
+  {
+    id: 2,
+    type: "Apartment",
+    address: "65 Lawson Rd",
+    location: "Belgravia",
+    picture: `../image/apt1.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    id: 3,
+    type: "Apartment",
+    address: "Quincy St",
+    location: "Jupiter",
+    picture: `../image/apt2.jpg`,
+    bedrooms: 3,
+    bathrooms: 2,
+    garage: 3,
+    price: 9500,
+  },
+  {
+    id: 4,
+    type: "Commercial",
+    address: "65 Lawson Rd",
+    location: "Leeward",
+    picture: `../image/cmrcl2.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    id: 5,
+    type: "Apartment",
+    address: "87-656 Farrington Highway A",
+    location: "Jupiter",
+    picture: `../image/res2.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    id: 6,
+    type: "Residential",
+    address: "41-157 Nalu Street",
+    location: "Rondebosh East",
+    picture: `../image/res3.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    id: 7,
+    type: "Apartment",
+    address: "87-1409 Akowai Road",
+    location: "Belgravia",
+    picture: `../image/apt3.jpg`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    id: 8,
+    type: "Commercial",
+    address: "1946 Pauoa Road A",
+    location: "Athlone",
+    picture: `../image/cmrcl3.webp`,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage: 1,
+    price: 5000,
+  },
+  {
+    id: 9,
+    type: "Residential",
+    address: "87-280 Laulele Street",
+    location: "Leeward",
+    picture: `../image/res4.jpg`,
+    bedrooms: 4,
+    bathrooms: 4,
+    garage: 5,
+    price: 10000,
+  },
+  {
+    id: 10,
+    type: "Commercial",
+    address: " 85-929 midway Street",
+    location: "Belgravia",
+    picture: `../image/cmrcl4.jpg`,
+    bedrooms: 2,
+    bathrooms: 2,
+    garage: 3,
+    price: 7800,
+  },
+  {
+    id: 11,
+    type: "Apartment",
+    address: "87-1013 Kahiwelola Street",
+    location: "Leeward",
+    picture: `../image/apt4.jpg`,
+    bedrooms: 3,
+    bathrooms: 2,
+    garage: 1,
+    price: 9000,
+  },
+  {
+    id: 12,
+    type: "Commercial",
+    location: "Athlone",
+    address: "8100 S Ashland Ave",
+    picture: `../image/cmrcl1.jpg`,
+    bedrooms: 2,
+    bathrooms: 3,
+    garage: 2,
+    price: 5000,
+  },
+]
+;
 // localStorage.removeItem('property')
 
 // displays data in array
 let properties = document.getElementById("properties");
-function loadData() {
+function loadData(n) {
   properties.innerHTML = "";
-  arr.forEach((item, index) => {
+  n.forEach((item, index) => {
     properties.innerHTML += `
   <div class="card p-3 m-3 mx-auto" data-aos="flip-right"
   data-aos-duration="1500" data-aos-delay="150">
@@ -78,6 +214,10 @@ loadData(arr);
 
 // Sorts by property type
 function sortType(type) {
+  if (type.target.value === 'all') {
+  return loadData(arr)
+  }
+
   let typeArr = arr.filter((x) => {
     return x.type == type.target.value;
   });
@@ -87,6 +227,9 @@ document.getElementById("property").addEventListener("change", sortType);
 
 // sorts by Location
 function sortLocation(location) {
+  if (location.target.value === 'all') {
+    return loadData(arr)
+    }
   let locArr = arr.filter((x) => {
     return x.location == location.target.value;
   });
@@ -96,15 +239,24 @@ document.getElementById("location").addEventListener("change", sortLocation);
 
 // sorts by bedrooms
 function sortBedroom(size) {
+  if (size.target.value === 'all') {
+    return loadData(arr)
+    }
+
   let bedArr = arr.filter((x) => {
     return x.bedrooms <= size.target.value;
   });
+  console.table(bedArr)
   loadData(bedArr);
 }
 document.getElementById("size").addEventListener("change", sortBedroom);
 
 // sorts by budget
 function sortBudget(price) {
+  if (price.target.value === 'all') {
+    return loadData(arr)
+    }
+
   let sortPrice = arr.filter((p) => {
     return p.price <= price.target.value;
   });

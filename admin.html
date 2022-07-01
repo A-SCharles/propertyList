@@ -31,6 +31,63 @@
         <section id="Properties">
             <div class="container text-center my-2">
                 <h2>Properties - Admin</h2>
+
+                <section id="sort">
+                    <div class="container rounded rounded-5 border border-2 p-3 my-3">
+                        <h2 class="text-center">Filter</h2>
+
+                        <div class="row">
+                            <div class="mx-auto col-lg-2 col-md-6 ">
+                                <label for="property">Looking For:</label>
+                                <select class="form-select" name="property" id="property">
+                                    <option value="all">Property Type</option>
+                                    <option value="Commercial">Commercial</option>
+                                    <option value="Residential">Residential</option>
+                                    <option value="Apartment">Apartment</option>
+                                </select>
+                            </div>
+                            <div class="mx-auto col-lg-2 col-md-6 ">
+                                <label for="location">Location: </label>
+                                <select class="form-select" name="location" id="location">
+                                    <option value="all">All Cities</option>
+                                    <option value="Athlone">Athlone</option>
+                                    <option value="Belgravia">Belgravia</option>
+                                    <option value="Leeward">Leeward</option>
+                                    <option value="Jupiter">Jupiter</option>
+                                    <option value="Rondebosch">Rondebosch East</option>
+                                </select>
+                            </div>
+                            <div class="mx-auto col-lg-2 col-md-6 ">
+                                <label for="size">Property size: </label>
+                                <select class="form-select" name="size" id="size">
+                                    <option value="all">Bedrooms</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="mx-auto col-lg-2 col-md-6 ">
+                                <label for="budget">Your Budget: </label>
+                                <select class="form-select" name="budget" id="budget">
+                                    <option value="all">Max. Price</option>
+                                    <option value="5000">R5000</option>
+                                    <option value="6000">R6000</option>
+                                    <option value="7000">R7000</option>
+                                    <option value="8000">R8000</option>
+                                    <option value="9000">R9000</option>
+                                    <option value="10000">R10000</option>
+                                </select>
+                            </div>
+                            <!-- <div class="mx-auto col-lg-2 col-md-6 "> -->
+                            <!-- <label for=""></label> -->
+                            <button id="btnSort" class="mx-auto col-lg-2 col-md-6 btn btn-primary h-50 mt-4">Sort</button>
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </section>
+
                 <div class="row border border-4 border-primary">
                     <table class="table">
                         <thead>
@@ -97,7 +154,7 @@
                                     <option value="Jupiter">Jupiter</option>
                                     <option value="Rondebosch">Rondebosch East</option>
                                 </select>
-                             </div>
+                            </div>
 
                             <!-- picture -->
                             <div class="mb-3">
@@ -149,7 +206,8 @@
                             <!-- price -->
                             <div class="mb-3">
                                 <label for="addPrice" class="form-label">Price</label>
-                                <input class="form-control" type="text" name="addPrice" id="addPrice" placeholder="Enter Price" required/>
+                                <input class="form-control" type="text" name="addPrice" id="addPrice"
+                                    placeholder="Enter Price" required />
                             </div>
                         </div>
                     </div>
@@ -157,7 +215,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="createProduct()">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addItem()">
                             Create Product
                         </button>
                     </div>
