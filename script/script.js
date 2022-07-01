@@ -37,7 +37,7 @@ let arr = JSON.parse(localStorage.getItem("property"))
   {
     id: 4,
     type: "Commercial",
-    address: "65 Lawson Rd",
+    address: "125 Oriental Rd",
     location: "Leeward",
     picture: `../image/cmrcl2.jpg`,
     bedrooms: 1,
